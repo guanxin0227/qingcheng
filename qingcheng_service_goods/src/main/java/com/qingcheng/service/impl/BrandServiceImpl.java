@@ -13,17 +13,38 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @ClassName BrandServiceImpl
+ * @Description TODO：品牌管理
+ * @Author guanxin
+ * @Date 2020/5/10 10:36
+ * @Version 1.0
+ */
 @Service
 public class BrandServiceImpl implements BrandService {
 
     @Autowired
     private BrandMapper brandMapper;
 
+    /*
+     * @Author guanxin
+     * @Description //TODO:查询所有品牌信息
+     * @Date 10:28 2020/5/10
+     * @Param []
+     * @return java.util.List<com.qingcheng.pojo.goods.Brand>
+     **/
     @Override
     public List<Brand> findAll() {
         return brandMapper.selectAll();
     }
 
+    /*
+     * @Author guanxin
+     * @Description //TODO:分页查询品牌，返回分页数据
+     * @Date 13:26 2020/5/10
+     * @Param [page, size]
+     * @return com.qingcheng.entity.PageResult<com.qingcheng.pojo.goods.Brand>
+     **/
     @Override
     public PageResult<Brand> findPage(int page, int size) {
         PageHelper.startPage(page,size);

@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @ClassName BrandController
+ * @Description TODO:品牌管理
+ * @Author guanxin
+ * @Date 2020/5/10 10:36
+ * @Version 1.0
+ */
 @RestController
 @RequestMapping("/brand")
 public class BrandController {
@@ -19,12 +26,25 @@ public class BrandController {
     @Reference
     private BrandService brandService;
 
+    /*
+     * @Author guanxin
+     * @Description //TODO：查询所有品牌
+     * @Date 10:41 2020/5/10
+     * @Param []
+     * @return java.util.List<com.qingcheng.pojo.goods.Brand>
+     **/
     @RequestMapping("/findAll")
     public List<Brand> findAll(){
         return brandService.findAll();
     }
 
-
+    /*
+     * @Author guanxin
+     * @Description //TODO：分页查询
+     * @Date 10:41 2020/5/10
+     * @Param []
+     * @return java.util.List<com.qingcheng.pojo.goods.Brand>
+     **/
     @GetMapping("/findPage")
     public PageResult<Brand> findPage(int page,int size){
         return  brandService.findPage(page,size);
