@@ -2,6 +2,11 @@ package com.qingcheng.entity;
 
 import java.io.Serializable;
 
+/**
+ * @Author guanxin
+ * @Description //TODO: 响应消息
+ * @Date 20:28 2020/5/10
+ **/
 public class Result implements Serializable {
 
     private Integer code;//业务返回码  0：成功  1:错误

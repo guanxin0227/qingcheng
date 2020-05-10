@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
+/**
+ * @Author guanxin
+ * @Description //TODO: 统一的异常处理
+ * @Date 21:05 2020/5/10
+ **/
 @ControllerAdvice
 public class BaseExceptionHandler {
 

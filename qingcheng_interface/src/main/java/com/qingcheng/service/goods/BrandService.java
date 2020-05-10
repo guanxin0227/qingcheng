@@ -32,16 +32,57 @@ public interface BrandService {
      **/
     public PageResult<Brand> findPage(int page,int size);
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 条件查询
+     * @Date 19:51 2020/5/10
+     * @Param [searchMap]
+     * @return java.util.List<com.qingcheng.pojo.goods.Brand>
+     **/
     public List<Brand> findList(Map<String,Object> searchMap);
 
-
+    /*
+     * @Author guanxin
+     * @Description //TODO: 条件分页查询
+     * @Date 20:16 2020/5/10
+     * @Param [searchMap, page, size]
+     * @return com.qingcheng.entity.PageResult<com.qingcheng.pojo.goods.Brand>
+     **/
     public PageResult<Brand> findPage(Map<String,Object> searchMap,int page,int size);
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 根据id查询商品信息
+     * @Date 20:23 2020/5/10
+     * @Param [id]
+     * @return com.qingcheng.pojo.goods.Brand
+     **/
     public Brand findById(Integer id);
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 添加商品
+     * @Date 20:26 2020/5/10
+     * @Param [brand]
+     * @return void
+     **/
     public void add(Brand brand);
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 品牌修改
+     * @Date 20:43 2020/5/10
+     * @Param [brand]
+     * @return void
+     **/
     public void update(Brand brand);
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 根据id删除品牌
+     * @Date 20:49 2020/5/10
+     * @Param [id]
+     * @return void
+     **/
     public void delete(Integer id);
 }
