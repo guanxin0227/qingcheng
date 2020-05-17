@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>spec管理</title>
+    <title>规格管理</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -41,11 +41,11 @@
 <div id="app">
 
     <div class="content-header">
-        <h1>管理<small>spec管理</small></h1>
+        <h1>管理<small>规格管理</small></h1>
         <el-breadcrumb separator-class="el-icon-arrow-right" class="breadcrumb">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>管理</el-breadcrumb-item>
-            <el-breadcrumb-item>spec管理</el-breadcrumb-item>
+            <el-breadcrumb-item>规格管理</el-breadcrumb-item>
         </el-breadcrumb>
     </div>
 
@@ -164,7 +164,7 @@
             },
             save (){
                 // this.pojo.image= this.imageUrl; //如页面有图片上传功能放开注释
-                this.pojo.options= this.pojo.options.replace( /\n/g,","  )
+                this.pojo.options = this.pojo.options.replace( /\n/g,",")
                 axios.post(`/spec/${this.pojo.id==null?'add':'update'}.do`,this.pojo).then(response => {
                     this.fetchData (); //刷新列表
                     this.formVisible = false ;//关闭窗口
