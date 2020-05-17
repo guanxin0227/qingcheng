@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>category管理</title>
+    <title>分类管理</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -41,11 +41,11 @@
 <div id="app">
 
     <div class="content-header">
-        <h1>管理<small>category管理</small></h1>
+        <h1>管理<small>分类管理</small></h1>
         <el-breadcrumb separator-class="el-icon-arrow-right" class="breadcrumb">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>管理</el-breadcrumb-item>
-            <el-breadcrumb-item>category管理</el-breadcrumb-item>
+            <el-breadcrumb-item>分类管理</el-breadcrumb-item>
         </el-breadcrumb>
     </div>
 
@@ -106,7 +106,6 @@
                         label="设置"  >
                     <template slot-scope="scope">
                         <el-button v-if="parentIds.length<2" @click="queryByParentId(scope.row.id)" size="mini" type="primary" size="small">查看下级</el-button>
-
                     </template>
                 </el-table-column>
 
@@ -206,7 +205,7 @@
             this.fetchData();
             //加载模板列表
             axios.get(`/template/findAll.do`).then(  response=>{
-                this.templateList=response.data
+                this.templateList = response.data
             })
         },
         methods:{
@@ -246,14 +245,16 @@
                     })
                 })
             },
+            <!-- 获取下一级 -->
             queryByParentId(parentId){
                 //做记号
                 this.parentIds.push(this.searchMap.parentId)
-                this.searchMap.parentId =parentId
+                this.searchMap.parentId = parentId
                 this.fetchData()
             },
+            <!-- 返回上一级 -->
             returnQuery(){
-                if(this.parentIds.length>0){
+                if(this.parentIds.length > 0){
                     this.searchMap.parentId =this.parentIds[ this.parentIds.length-1 ]
                     this.parentIds.splice( this.parentIds.length-1,1  ) //删除数组最后一个元素
                     this.fetchData()
