@@ -1,6 +1,11 @@
 package com.qingcheng.controller.file;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.aliyun.oss.OSSClient;
+import com.qingcheng.pojo.goods.Album;
+import com.qingcheng.service.goods.AlbumService;
+import net.sf.json.JSONArray;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @ClassName UploadController
@@ -87,5 +92,66 @@ public class UploadController {
             e.printStackTrace();
         }
         return "https://" + bucketName + ".oss-cn-beijing.aliyuncs.com/" + fileName;
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 图库上传到阿里云
+     * @Date 23:51 2020/5/16
+     * @Param [file：文件, folder：文件夹类型]
+     * @return java.lang.String
+     **/
+
+    @Reference
+    private AlbumService albumService;
+
+    @PostMapping (value = "/aliyunOssTK")
+    public String aliyunOssUploadTK(@RequestParam("file") MultipartFile file,String folder,Long id){
+
+        List<Map<String,Object>> list = new ArrayList();
+        Map<String,Object> map = new HashMap<>();
+
+        //空间名
+        String bucketName = "guanxin-qingcheng";
+
+        //上传前文件名
+        String originalFilename = file.getOriginalFilename();
+
+        //上传后文件名
+        String fileName = folder + "/" + UUID.randomUUID() + originalFilename;
+
+        //上传路径
+        String url = "https://" + bucketName + ".oss-cn-beijing.aliyuncs.com/" + fileName;
+
+        try {
+            //上传到阿里云服务器
+            ossClient.putObject(bucketName,fileName,file.getInputStream());
+
+            //上传后存入数据库
+            Album byId = albumService.findById(id);
+
+            map.put("name",originalFilename);
+            map.put("url",url);
+
+            if(StringUtils.isEmpty(byId.getImageItems())){
+
+                String jsonData = map.toString().replace("{", "{\"").replace("}", "\"}").replace("=","\":\"").replace(", ", "\",\"").replace("}\",\"{", "},{");
+                byId.setImageItems(jsonData);
+                albumService.update(byId);
+            }else{
+
+                String jsonData = map.toString().replace("{", "{\"").replace("}", "\"}").replace("=","\":\"").replace(", ", "\",\"").replace("}\",\"{", "},{");
+                JSONArray json = JSONArray.fromObject(byId.getImageItems());
+                json.add(jsonData);
+                String json1 = json.toString();
+                byId.setImageItems(json1);
+                albumService.update(byId);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return url;
     }
 }
