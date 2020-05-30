@@ -1,5 +1,6 @@
 package com.qingcheng.service.goods;
 import com.qingcheng.entity.PageResult;
+import com.qingcheng.pojo.goods.Goods;
 import com.qingcheng.pojo.goods.Spu;
 
 import java.util.*;
@@ -10,26 +11,70 @@ import java.util.*;
 public interface SpuService {
 
 
-    public List<Spu> findAll();
+    List<Spu> findAll();
 
 
-    public PageResult<Spu> findPage(int page, int size);
+    PageResult<Spu> findPage(int page, int size);
 
 
-    public List<Spu> findList(Map<String, Object> searchMap);
+    List<Spu> findList(Map<String, Object> searchMap);
 
 
-    public PageResult<Spu> findPage(Map<String, Object> searchMap, int page, int size);
+    PageResult<Spu> findPage(Map<String, Object> searchMap, int page, int size);
 
 
-    public Spu findById(String id);
+    Spu findById(String id);
 
-    public void add(Spu spu);
-
-
-    public void update(Spu spu);
+    void add(Spu spu);
 
 
-    public void delete(String id);
+    void update(Spu spu);
 
+
+    void delete(String id);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 保存商品信息
+     * @Date 21:46 2020/5/25
+     * @Param [goods]
+     * @return void
+     **/
+    void saveGoods(Goods goods);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 根据id查询goods信息
+     * @Date 22:54 2020/5/26
+     * @Param [id]
+     * @return com.qingcheng.pojo.goods.Goods
+     **/
+    Goods findGoodsById(String id);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品审核
+     * @Date 22:13 2020/5/28
+     * @Param [id, status, message]
+     * @return void
+     **/
+    void audit(String id, String status, String message);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品下架
+     * @Date 22:44 2020/5/28
+     * @Param [id]
+     * @return void
+     **/
+    void pull(String id);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品上架
+     * @Date 22:50 2020/5/28
+     * @Param [id]
+     * @return void
+     **/
+    void put(String id);
 }

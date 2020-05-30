@@ -55,10 +55,10 @@ public class Spu implements Serializable{
 
 	private String status;//审核状态
 
-	
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -66,6 +66,7 @@ public class Spu implements Serializable{
 	public String getSn() {
 		return sn;
 	}
+
 	public void setSn(String sn) {
 		this.sn = sn;
 	}
@@ -73,6 +74,7 @@ public class Spu implements Serializable{
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -80,6 +82,7 @@ public class Spu implements Serializable{
 	public String getCaption() {
 		return caption;
 	}
+
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
@@ -87,6 +90,7 @@ public class Spu implements Serializable{
 	public Integer getBrandId() {
 		return brandId;
 	}
+
 	public void setBrandId(Integer brandId) {
 		this.brandId = brandId;
 	}
@@ -94,6 +98,7 @@ public class Spu implements Serializable{
 	public Integer getCategory1Id() {
 		return category1Id;
 	}
+
 	public void setCategory1Id(Integer category1Id) {
 		this.category1Id = category1Id;
 	}
@@ -101,6 +106,7 @@ public class Spu implements Serializable{
 	public Integer getCategory2Id() {
 		return category2Id;
 	}
+
 	public void setCategory2Id(Integer category2Id) {
 		this.category2Id = category2Id;
 	}
@@ -108,6 +114,7 @@ public class Spu implements Serializable{
 	public Integer getCategory3Id() {
 		return category3Id;
 	}
+
 	public void setCategory3Id(Integer category3Id) {
 		this.category3Id = category3Id;
 	}
@@ -115,6 +122,7 @@ public class Spu implements Serializable{
 	public Integer getTemplateId() {
 		return templateId;
 	}
+
 	public void setTemplateId(Integer templateId) {
 		this.templateId = templateId;
 	}
@@ -122,6 +130,7 @@ public class Spu implements Serializable{
 	public Integer getFreightId() {
 		return freightId;
 	}
+
 	public void setFreightId(Integer freightId) {
 		this.freightId = freightId;
 	}
@@ -129,6 +138,7 @@ public class Spu implements Serializable{
 	public String getImage() {
 		return image;
 	}
+
 	public void setImage(String image) {
 		this.image = image;
 	}
@@ -136,6 +146,7 @@ public class Spu implements Serializable{
 	public String getImages() {
 		return images;
 	}
+
 	public void setImages(String images) {
 		this.images = images;
 	}
@@ -143,6 +154,7 @@ public class Spu implements Serializable{
 	public String getSaleService() {
 		return saleService;
 	}
+
 	public void setSaleService(String saleService) {
 		this.saleService = saleService;
 	}
@@ -150,6 +162,7 @@ public class Spu implements Serializable{
 	public String getIntroduction() {
 		return introduction;
 	}
+
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
@@ -157,6 +170,7 @@ public class Spu implements Serializable{
 	public String getSpecItems() {
 		return specItems;
 	}
+
 	public void setSpecItems(String specItems) {
 		this.specItems = specItems;
 	}
@@ -164,6 +178,7 @@ public class Spu implements Serializable{
 	public String getParaItems() {
 		return paraItems;
 	}
+
 	public void setParaItems(String paraItems) {
 		this.paraItems = paraItems;
 	}
@@ -171,6 +186,7 @@ public class Spu implements Serializable{
 	public Integer getSaleNum() {
 		return saleNum;
 	}
+
 	public void setSaleNum(Integer saleNum) {
 		this.saleNum = saleNum;
 	}
@@ -178,6 +194,7 @@ public class Spu implements Serializable{
 	public Integer getCommentNum() {
 		return commentNum;
 	}
+
 	public void setCommentNum(Integer commentNum) {
 		this.commentNum = commentNum;
 	}
@@ -185,6 +202,7 @@ public class Spu implements Serializable{
 	public String getIsMarketable() {
 		return isMarketable;
 	}
+
 	public void setIsMarketable(String isMarketable) {
 		this.isMarketable = isMarketable;
 	}
@@ -192,6 +210,7 @@ public class Spu implements Serializable{
 	public String getIsEnableSpec() {
 		return isEnableSpec;
 	}
+
 	public void setIsEnableSpec(String isEnableSpec) {
 		this.isEnableSpec = isEnableSpec;
 	}
@@ -199,6 +218,7 @@ public class Spu implements Serializable{
 	public String getIsDelete() {
 		return isDelete;
 	}
+
 	public void setIsDelete(String isDelete) {
 		this.isDelete = isDelete;
 	}
@@ -206,10 +226,8 @@ public class Spu implements Serializable{
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
-	
 }

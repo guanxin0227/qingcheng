@@ -2,6 +2,8 @@ package com.qingcheng.pojo.goods;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
+
 /**
  * sku实体类
  * @author Administrator
@@ -12,9 +14,6 @@ public class Sku implements Serializable{
 
 	@Id
 	private String id;//商品id
-
-
-	
 
 	private String sn;//商品条码
 
@@ -52,10 +51,10 @@ public class Sku implements Serializable{
 
 	private String status;//商品状态 1-正常，2-下架，3-删除
 
-	
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -63,6 +62,7 @@ public class Sku implements Serializable{
 	public String getSn() {
 		return sn;
 	}
+
 	public void setSn(String sn) {
 		this.sn = sn;
 	}
@@ -70,6 +70,7 @@ public class Sku implements Serializable{
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -77,6 +78,7 @@ public class Sku implements Serializable{
 	public Integer getPrice() {
 		return price;
 	}
+
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
@@ -84,6 +86,7 @@ public class Sku implements Serializable{
 	public Integer getNum() {
 		return num;
 	}
+
 	public void setNum(Integer num) {
 		this.num = num;
 	}
@@ -91,6 +94,7 @@ public class Sku implements Serializable{
 	public Integer getAlertNum() {
 		return alertNum;
 	}
+
 	public void setAlertNum(Integer alertNum) {
 		this.alertNum = alertNum;
 	}
@@ -98,6 +102,7 @@ public class Sku implements Serializable{
 	public String getImage() {
 		return image;
 	}
+
 	public void setImage(String image) {
 		this.image = image;
 	}
@@ -105,6 +110,7 @@ public class Sku implements Serializable{
 	public String getImages() {
 		return images;
 	}
+
 	public void setImages(String images) {
 		this.images = images;
 	}
@@ -112,27 +118,31 @@ public class Sku implements Serializable{
 	public Integer getWeight() {
 		return weight;
 	}
+
 	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
 
-	public java.util.Date getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(java.util.Date createTime) {
+
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public java.util.Date getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
-	public void setUpdateTime(java.util.Date updateTime) {
+
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 
 	public String getSpuId() {
 		return spuId;
 	}
+
 	public void setSpuId(String spuId) {
 		this.spuId = spuId;
 	}
@@ -140,6 +150,7 @@ public class Sku implements Serializable{
 	public Integer getCategoryId() {
 		return categoryId;
 	}
+
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
@@ -147,6 +158,7 @@ public class Sku implements Serializable{
 	public String getCategoryName() {
 		return categoryName;
 	}
+
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
@@ -154,6 +166,7 @@ public class Sku implements Serializable{
 	public String getBrandName() {
 		return brandName;
 	}
+
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
@@ -161,6 +174,7 @@ public class Sku implements Serializable{
 	public String getSpec() {
 		return spec;
 	}
+
 	public void setSpec(String spec) {
 		this.spec = spec;
 	}
@@ -168,6 +182,7 @@ public class Sku implements Serializable{
 	public Integer getSaleNum() {
 		return saleNum;
 	}
+
 	public void setSaleNum(Integer saleNum) {
 		this.saleNum = saleNum;
 	}
@@ -175,6 +190,7 @@ public class Sku implements Serializable{
 	public Integer getCommentNum() {
 		return commentNum;
 	}
+
 	public void setCommentNum(Integer commentNum) {
 		this.commentNum = commentNum;
 	}
@@ -182,10 +198,8 @@ public class Sku implements Serializable{
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
-	
 }

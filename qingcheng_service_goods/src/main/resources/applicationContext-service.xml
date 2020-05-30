@@ -10,5 +10,4 @@
 		<constructor-arg index="0" value="1"></constructor-arg>
 		<constructor-arg index="1" value="1"></constructor-arg>
 	</bean>
-
 </beans>

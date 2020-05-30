@@ -3,6 +3,7 @@ package com.qingcheng.controller.goods;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.qingcheng.entity.PageResult;
 import com.qingcheng.entity.Result;
+import com.qingcheng.pojo.goods.Goods;
 import com.qingcheng.pojo.goods.Spu;
 import com.qingcheng.service.goods.SpuService;
 import org.springframework.web.bind.annotation.*;
@@ -60,4 +61,53 @@ public class SpuController {
         return new Result();
     }
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品保存
+     * @Date 23:01 2020/5/26
+     * @Param [goods]
+     * @return com.qingcheng.entity.Result
+     **/
+    @PostMapping("/saveGoods")
+    public Result saveGoods(@RequestBody Goods goods){
+        spuService.saveGoods(goods);
+        return new Result();
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 根据id查询goods信息
+     * @Date 23:04 2020/5/26
+     * @Param [id]
+     * @return com.qingcheng.pojo.goods.Goods
+     **/
+    @GetMapping("/findGoodsById")
+    public Goods findGoodsById(String id){
+        return spuService.findGoodsById(id);
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品审核
+     * @Date 22:43 2020/5/28
+     * @Param [map]
+     * @return com.qingcheng.entity.Result
+     **/
+    @PostMapping("/audit")
+    public Result audit(@RequestBody Map<String,String> map){
+        spuService.audit(map.get("id"),map.get("status"),map.get("message"));
+        return new Result();
+    }
+
+    @GetMapping("/pull")
+    public Result pull(String id){
+        spuService.pull(id);
+        return new Result();
+    }
+
+    @GetMapping("/put")
+    public Result put(String id){
+        spuService.put(id);
+        return new Result();
+    }
 }
