@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -274,12 +275,107 @@ public class SpuServiceImpl implements SpuService {
         //修改状态
         Spu spu = spuMapper.selectByPrimaryKey(id);
         //判断商品是否审核通过
-        if(!spu.getIsMarketable().equals("1")){
+        if(!spu.getStatus().equals("1")){
             throw new RuntimeException("此商品未通过审核，不能进行上架操作");
         }
         spu.setIsMarketable("1");
         spuMapper.updateByPrimaryKeySelective(spu);
         //记录日志
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 批量上架
+     * @Date 10:32 2020/5/30
+     * @Param [ids]
+     * @return void
+     **/
+    @Override
+    public int putBatch(String[] ids) {
+
+        //1.修改状态
+        Spu spu = new Spu();
+        spu.setIsMarketable("1");
+
+        Example example = new Example(Spu.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andIn("id", Arrays.asList(ids));
+        //下架的
+        criteria.andEqualTo("isMarketable","0");
+        //审核通过的
+        criteria.andEqualTo("status","1");
+
+        int count = spuMapper.updateByExampleSelective(spu, example);
+
+        //2.记录日志信息
+
+        return count;
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 批量下架
+     * @Date 10:56 2020/5/30
+     * @Param [ids]
+     * @return int
+     **/
+    @Override
+    public int pullBatch(String[] ids) {
+
+        //1.修改状态
+        Spu spu = new Spu();
+        spu.setIsMarketable("0");
+
+        Example example = new Example(Spu.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andIn("id",Arrays.asList(ids));
+        criteria.andEqualTo("isMarketable","0");
+        criteria.andEqualTo("status","1");
+
+        int count = spuMapper.updateByExampleSelective(spu, example);
+
+        //2.记录日志
+
+        return count;
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 逻辑删除商品
+     * @Date 11:10 2020/5/30
+     * @Param [id]
+     * @return int
+     **/
+    @Override
+    public int isDelete(String id) {
+
+        Spu spu = new Spu();
+        //状态1表示删除，0表示还原
+        spu.setIsDelete("1");
+
+        if(spu.getIsMarketable().equals("1")){
+            throw new RuntimeException("该商品上架中，不能进行删除操作");
+        }
+
+        int count = spuMapper.updateByPrimaryKeySelective(spu);
+        return count;
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 还原删除商品
+     * @Date 11:11 2020/5/30
+     * @Param [id]
+     * @return int
+     **/
+    @Override
+    public int reDelete(String id) {
+        Spu spu = new Spu();
+        //状态1表示删除，0表示还原
+        spu.setIsDelete("0");
+
+        int count = spuMapper.updateByPrimaryKeySelective(spu);
+        return count;
     }
 
     /**

@@ -99,15 +99,81 @@ public class SpuController {
         return new Result();
     }
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品下架
+     * @Date 22:44 2020/5/28
+     * @Param [id]
+     * @return void
+     **/
     @GetMapping("/pull")
     public Result pull(String id){
         spuService.pull(id);
         return new Result();
     }
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品上架
+     * @Date 22:50 2020/5/28
+     * @Param [id]
+     * @return void
+     **/
     @GetMapping("/put")
     public Result put(String id){
         spuService.put(id);
         return new Result();
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 批量上架
+     * @Date 10:32 2020/5/30
+     * @Param [ids]
+     * @return void
+     **/
+    @GetMapping("/putBatch")
+    public Result putBatch(String[] ids){
+        int count = spuService.putBatch(ids);
+        return new Result(0,"成功上架了" + count + "个商品");
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 批量下架
+     * @Date 10:32 2020/5/30
+     * @Param [ids]
+     * @return void
+     **/
+    @GetMapping("/pullBatch")
+    public Result pullBatch(String[] ids){
+        int count = spuService.pullBatch(ids);
+        return new Result(0,"成功上架了" + count + "个商品");
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品删除
+     * @Date 10:32 2020/5/30
+     * @Param [ids]
+     * @return void
+     **/
+    @GetMapping("/isDelete")
+    public Result isDelete(String id){
+        int count = spuService.isDelete(id);
+        return new Result(0,"删除成功");
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 商品还原
+     * @Date 10:32 2020/5/30
+     * @Param [ids]
+     * @return void
+     **/
+    @GetMapping("/reDelete")
+    public Result reDelete(String id){
+        int count = spuService.reDelete(id);
+        return new Result(0,"还原成功");
     }
 }

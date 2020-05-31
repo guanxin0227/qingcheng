@@ -77,4 +77,40 @@ public interface SpuService {
      * @return void
      **/
     void put(String id);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 批量上架
+     * @Date 10:31 2020/5/30
+     * @Param [ids]
+     * @return void
+     **/
+    int putBatch(String[] ids);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 批量下架
+     * @Date 10:56 2020/5/30
+     * @Param [ids]
+     * @return int
+     **/
+    int pullBatch(String[] ids);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 逻辑删除商品
+     * @Date 11:10 2020/5/30
+     * @Param [id]
+     * @return int
+     **/
+    int isDelete(String id);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 还原删除商品
+     * @Date 11:11 2020/5/30
+     * @Param [id]
+     * @return int
+     **/
+    int reDelete(String id);
 }
