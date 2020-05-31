@@ -7,6 +7,7 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName CategoryReportMapper
@@ -29,4 +30,17 @@ public interface CategoryReportMapper extends Mapper<CategoryReport> {
             "where oi.order_id = o.id and o.pay_status ='1' and o.is_delete = '0' and date_format(o.pay_time,'%Y-%m-%d') = #{date} " +
             "group by oi.category_id1,oi.category_id2,oi.category_id3,date_format(o.pay_time,'%Y-%m-%d')")
     List<CategoryReport> categoryReport(@Param("date") LocalDate date);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 按日期统计一级分类数据
+     * @Date 17:53 2020/5/31
+     * @Param [startDate, endDate]
+     * @return java.util.List<java.util.Map>
+     **/
+    @Select("select category_id1 categoryId1, sum(num) num,sum(money) money " +
+            "from qingcheng_order.tb_category_report tcr " +
+            "where tcr.count_date >= #{startDate} and tcr.count_date <= #{endDate} " +
+            "group by tcr.category_id1")
+    List<Map> category1Count(@Param("startDate") String startDate,@Param("endDate") String endDate);
 }

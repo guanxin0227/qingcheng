@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName CategoryReportController
@@ -40,4 +41,15 @@ public class CategoryReportController {
         return categoryReportService.categoryReport(localDate);
     }
 
+    /*
+     * @Author guanxin
+     * @Description //TODO: 按日期统计一级分类数据
+     * @Date 17:53 2020/5/31
+     * @Param [startDate, endDate]
+     * @return java.util.List<java.util.Map>
+     **/
+    @GetMapping("/category1Count")
+    public List<Map> category1Count(String startDate,String endDate){
+        return categoryReportService.category1Count(startDate,endDate);
+    }
 }
