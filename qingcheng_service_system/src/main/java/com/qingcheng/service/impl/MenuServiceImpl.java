@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.qingcheng.dao.MenuMapper;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -93,6 +95,51 @@ public class MenuServiceImpl implements MenuService {
      */
     public void delete(String id) {
         menuMapper.deleteByPrimaryKey(id);
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 获取所有菜单
+     * @Date 21:12 2020/6/3
+     * @Param []
+     * @return java.util.List<java.util.Map>
+     **/
+    @Override
+    public List<Map> findAllMeum() {
+
+        //查询出符合条件的菜单列表，通过筛选，列出每一级菜单
+        List<Menu> menuList = findAll();
+
+       List<Map> mapList =  findMenuListByParentId(menuList,"0");
+
+        return mapList;
+    }
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 查询下级菜单
+     * @Date 21:34 2020/6/3
+     * @Param [menuList, parentId]
+     * @return java.util.List<java.util.Map>
+     **/
+    private List<Map> findMenuListByParentId(List<Menu> menuList, String parentId) {
+
+        List<Map> mapList = new ArrayList<>();
+
+        for (Menu menu : menuList) {
+            if(menu.getParentId().equals(parentId)){
+                Map map = new HashMap();
+
+                map.put("path",menu.getId());
+                map.put("title",menu.getName());
+                map.put("linkUrl",menu.getUrl());
+                map.put("icon",menu.getIcon());
+                map.put("children",findMenuListByParentId(menuList,menu.getId()));
+
+                mapList.add(map);
+            }
+        }
+        return mapList;
     }
 
     /**

@@ -17,8 +17,8 @@
         <!-- 所有资源必须要有ROLE_ADMIN角色才能访问资源 -->
         <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>
 
-        <!--当前的工程实现表单登陆authentication-success-handler-ref="loginHandler"-->
-        <form-login login-page="/login.html" default-target-url="/main.html" authentication-failure-url="/login.html" />
+        <!--当前的工程实现表单登陆-->
+        <form-login login-page="/login.html" default-target-url="/main.html" authentication-failure-url="/login.html" authentication-success-handler-ref="loginHandler"/>
 
         <!--退出登陆  /logout post-->
         <logout/>
@@ -27,9 +27,9 @@
         <csrf disabled="true"/>
 
         <!--同源策略-->
-        <!--<headers>-->
-            <!--<frame-options policy="SAMEORIGIN"/>-->
-        <!--</headers>-->
+        <headers>
+            <frame-options policy="SAMEORIGIN"/>
+        </headers>
     </http>
 
     <!--认证管理器-->
@@ -41,5 +41,5 @@
 
     <beans:bean id="userDetailService" class="com.qingcheng.controller.security.UserDetailServiceImpl"/>
     <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-    <!--<beans:bean id="loginHandler" class="com.qingcheng.controller.security.AuthenticationSuccessHandlerImpl"/>-->
+    <beans:bean id="loginHandler" class="com.qingcheng.controller.security.AuthenticationSuccessHandlerImpl"/>
 </beans:beans>

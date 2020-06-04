@@ -12,26 +12,35 @@ import java.util.Map;
 public interface MenuService {
 
 
-    public List<Menu> findAll();
+    List<Menu> findAll();
 
 
-    public PageResult<Menu> findPage(int page, int size);
+    PageResult<Menu> findPage(int page, int size);
 
 
-    public List<Menu> findList(Map<String, Object> searchMap);
+    List<Menu> findList(Map<String, Object> searchMap);
 
 
-    public PageResult<Menu> findPage(Map<String, Object> searchMap, int page, int size);
+    PageResult<Menu> findPage(Map<String, Object> searchMap, int page, int size);
 
 
-    public Menu findById(String id);
+    Menu findById(String id);
 
-    public void add(Menu menu);
-
-
-    public void update(Menu menu);
+    void add(Menu menu);
 
 
-    public void delete(String id);
+    void update(Menu menu);
+
+
+    void delete(String id);
+
+    /*
+     * @Author guanxin
+     * @Description //TODO: 获取所有菜单
+     * @Date 21:12 2020/6/3
+     * @Param []
+     * @return java.util.List<java.util.Map>
+     **/
+    List<Map> findAllMeum();
 
 }

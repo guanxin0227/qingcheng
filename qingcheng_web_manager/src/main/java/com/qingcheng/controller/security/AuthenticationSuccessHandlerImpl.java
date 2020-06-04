@@ -19,5 +19,14 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
 
+        //登录后调用
+        System.out.print("登录成功");
+        try {
+            httpServletRequest.getRequestDispatcher("/main.html").forward(httpServletRequest,httpServletResponse);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
